@@ -30,7 +30,7 @@
 		"@dotenvx/dotenvx": "^1.34.0",
 		"@vscode/vsce": "3.3.2",
 		"esbuild": "^0.25.0",
-		"eslint": "^9.27.0",
+		"eslint": "^9.31.0",
 		"husky": "^9.1.7",
 		"knip": "^5.44.4",
 		"lint-staged": "^16.0.0",
