@@ -68,6 +68,7 @@ export interface VectorStoreSearchResult {
 	id: string | number
 	score: number
 	payload?: Payload | null
+	vector: number[]
 }
 
 export interface Payload {

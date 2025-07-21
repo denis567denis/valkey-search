@@ -44,6 +44,7 @@ import { CODEBASE_INDEX_DEFAULTS } from "@roo-code/types"
 
 // Default URLs for providers
 const DEFAULT_QDRANT_URL = "http://localhost:6333"
+const DEFAULT_VALKEY_URL = "http://localhost:6380"
 const DEFAULT_OLLAMA_URL = "http://localhost:11434"
 
 interface CodeIndexPopoverProps {
@@ -55,6 +56,7 @@ interface LocalCodeIndexSettings {
 	// Global state settings
 	codebaseIndexEnabled: boolean
 	codebaseIndexQdrantUrl: string
+	codebaseIndexValkeyUrl: string
 	codebaseIndexEmbedderProvider: EmbedderProvider
 	codebaseIndexEmbedderBaseUrl?: string
 	codebaseIndexEmbedderModelId: string
@@ -65,6 +67,7 @@ interface LocalCodeIndexSettings {
 	// Secret settings (start empty, will be loaded separately)
 	codeIndexOpenAiKey?: string
 	codeIndexQdrantApiKey?: string
+	codeIndexValkeyPassword?: string
 	codebaseIndexOpenAiCompatibleBaseUrl?: string
 	codebaseIndexOpenAiCompatibleApiKey?: string
 	codebaseIndexGeminiApiKey?: string
@@ -77,8 +80,15 @@ const createValidationSchema = (provider: EmbedderProvider, t: any) => {
 		codebaseIndexQdrantUrl: z
 			.string()
 			.min(1, t("settings:codeIndex.validation.qdrantUrlRequired"))
-			.url(t("settings:codeIndex.validation.invalidQdrantUrl")),
+			.url(t("settings:codeIndex.validation.invalidQdrantUrl"))
+			.optional(),
 		codeIndexQdrantApiKey: z.string().optional(),
+		codebaseIndexValkeyUrl: z
+			.string()
+			.min(1, t("settings:codeIndex.validation.valkeyUrlRequired"))
+			.url(t("settings:codeIndex.validation.invalidValkeyUrl"))
+			.optional(),
+		codeIndexValkeyPassword: z.string().optional(),
 	})
 
 	switch (provider) {
@@ -154,6 +164,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 	const getDefaultSettings = (): LocalCodeIndexSettings => ({
 		codebaseIndexEnabled: true,
 		codebaseIndexQdrantUrl: "",
+		codebaseIndexValkeyUrl: "",
 		codebaseIndexEmbedderProvider: "openai",
 		codebaseIndexEmbedderBaseUrl: "",
 		codebaseIndexEmbedderModelId: "",
@@ -162,6 +173,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 		codebaseIndexSearchMinScore: CODEBASE_INDEX_DEFAULTS.DEFAULT_SEARCH_MIN_SCORE,
 		codeIndexOpenAiKey: "",
 		codeIndexQdrantApiKey: "",
+		codeIndexValkeyPassword: "",
 		codebaseIndexOpenAiCompatibleBaseUrl: "",
 		codebaseIndexOpenAiCompatibleApiKey: "",
 		codebaseIndexGeminiApiKey: "",
@@ -184,6 +196,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 			const settings = {
 				codebaseIndexEnabled: codebaseIndexConfig.codebaseIndexEnabled ?? true,
 				codebaseIndexQdrantUrl: codebaseIndexConfig.codebaseIndexQdrantUrl || "",
+				codebaseIndexValkeyUrl: (codebaseIndexConfig as any).valkeyUrl || "",
 				codebaseIndexEmbedderProvider: codebaseIndexConfig.codebaseIndexEmbedderProvider || "openai",
 				codebaseIndexEmbedderBaseUrl: codebaseIndexConfig.codebaseIndexEmbedderBaseUrl || "",
 				codebaseIndexEmbedderModelId: codebaseIndexConfig.codebaseIndexEmbedderModelId || "",
@@ -195,6 +208,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 					codebaseIndexConfig.codebaseIndexSearchMinScore ?? CODEBASE_INDEX_DEFAULTS.DEFAULT_SEARCH_MIN_SCORE,
 				codeIndexOpenAiKey: "",
 				codeIndexQdrantApiKey: "",
+				codeIndexValkeyPassword: "",
 				codebaseIndexOpenAiCompatibleBaseUrl: codebaseIndexConfig.codebaseIndexOpenAiCompatibleBaseUrl || "",
 				codebaseIndexOpenAiCompatibleApiKey: "",
 				codebaseIndexGeminiApiKey: "",
@@ -277,6 +291,9 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 					}
 					if (!prev.codeIndexQdrantApiKey || prev.codeIndexQdrantApiKey === SECRET_PLACEHOLDER) {
 						updated.codeIndexQdrantApiKey = secretStatus.hasQdrantApiKey ? SECRET_PLACEHOLDER : ""
+					}
+					if (!prev.codeIndexValkeyPassword || prev.codeIndexValkeyPassword === SECRET_PLACEHOLDER) {
+						updated.codeIndexValkeyPassword = secretStatus.hasValkeyPassword ? SECRET_PLACEHOLDER : ""
 					}
 					if (
 						!prev.codebaseIndexOpenAiCompatibleApiKey ||
@@ -920,6 +937,7 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 									)}
 
 									{/* Qdrant Settings */}
+
 									<div className="space-y-2">
 										<label className="text-sm font-medium">
 											{t("settings:codeIndex.qdrantUrlLabel")}
@@ -944,6 +962,56 @@ export const CodeIndexPopover: React.FC<CodeIndexPopoverProps> = ({
 										{formErrors.codebaseIndexQdrantUrl && (
 											<p className="text-xs text-vscode-errorForeground mt-1 mb-0">
 												{formErrors.codebaseIndexQdrantUrl}
+											</p>
+										)}
+									</div>
+
+									<div className="space-y-2">
+										<label className="text-sm font-medium">
+											{t("settings:codeIndex.valkeyUrlLabel")}
+										</label>
+										<VSCodeTextField
+											value={currentSettings.codebaseIndexValkeyUrl || ""}
+											onInput={(e: any) =>
+												updateSetting("codebaseIndexValkeyUrl", e.target.value)
+											}
+											onBlur={(e: any) => {
+												// Set default Valkey URL if field is empty
+												if (!e.target.value.trim()) {
+													currentSettings.codebaseIndexValkeyUrl = DEFAULT_VALKEY_URL
+													updateSetting("codebaseIndexValkeyUrl", DEFAULT_VALKEY_URL)
+												}
+											}}
+											placeholder={t("settings:codeIndex.valkeyUrlPlaceholder")}
+											className={cn("w-full", {
+												"border-red-500": formErrors.codebaseIndexValkeyUrl,
+											})}
+										/>
+										{formErrors.codebaseIndexValkeyUrl && (
+											<p className="text-xs text-vscode-errorForeground mt-1 mb-0">
+												{formErrors.codebaseIndexValkeyUrl}
+											</p>
+										)}
+									</div>
+
+									<div className="space-y-2">
+										<label className="text-sm font-medium">
+											{t("settings:codeIndex.valkeyPasswordLabel")}
+										</label>
+										<VSCodeTextField
+											type="password"
+											value={currentSettings.codeIndexValkeyPassword || ""}
+											onInput={(e: any) =>
+												updateSetting("codeIndexValkeyPassword", e.target.value)
+											}
+											placeholder={t("settings:codeIndex.valkeyPasswordPlaceholder")}
+											className={cn("w-full", {
+												"border-red-500": formErrors.codeIndexValkeyPassword,
+											})}
+										/>
+										{formErrors.codeIndexValkeyPassword && (
+											<p className="text-xs text-vscode-errorForeground mt-1 mb-0">
+												{formErrors.codeIndexValkeyPassword}
 											</p>
 										)}
 									</div>

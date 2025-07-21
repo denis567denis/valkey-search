@@ -15,6 +15,8 @@ export interface CodeIndexConfig {
 	geminiOptions?: { apiKey: string }
 	qdrantUrl?: string
 	qdrantApiKey?: string
+	valkeyUrl?: string
+	valkeyPassword?: string
 	searchMinScore?: number
 	searchMaxResults?: number
 }
@@ -35,4 +37,6 @@ export type PreviousConfigSnapshot = {
 	geminiApiKey?: string
 	qdrantUrl?: string
 	qdrantApiKey?: string
+	valkeyUrl?: string
+	valkeyPassword?: string
 }
