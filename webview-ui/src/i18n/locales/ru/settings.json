@@ -119,7 +119,12 @@
 		"searchMinScoreResetTooltip": "Сбросить к значению по умолчанию (0.4)",
 		"searchMaxResultsLabel": "Максимальное количество результатов поиска",
 		"searchMaxResultsDescription": "Максимальное количество результатов поиска, возвращаемых при запросе индекса кодовой базы. Более высокие значения предоставляют больше контекста, но могут включать менее релевантные результаты.",
-		"resetToDefault": "Сбросить к значению по умолчанию"
+		"resetToDefault": "Сбросить к значению по умолчанию",
+		"searchProviderLabel": "Qdrant / Valkey Search",
+		"qdrantProvider": "Qdrant",
+		"valkeyProvider": "Valkey Search",
+		"valkeyUrlLabel": "URL Valkey",
+		"valkeyUrlPlaceholder": "Введите URL сервера Valkey"
 	},
 	"autoApprove": {
 		"description": "Разрешить Roo автоматически выполнять операции без необходимости одобрения. Включайте эти параметры только если полностью доверяете ИИ и понимаете связанные с этим риски безопасности.",

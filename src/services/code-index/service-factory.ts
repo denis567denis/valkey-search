@@ -127,11 +127,13 @@ export class CodeIndexServiceFactory {
 			}
 		}
 
-		// Support both Qdrant and Valkey
-		if (config.qdrantUrl) {
+		// Determine search provider (either from config or by URL presence)
+		const searchProvider = config.searchProvider
+
+		if (searchProvider === "qdrant" && config.qdrantUrl) {
 			return new QdrantVectorStore(this.workspacePath, config.qdrantUrl, vectorSize, config.qdrantApiKey)
-		} else if (config.valkeyUrl) {
-			return new ValkeySearchVectorStore(this.workspacePath, config.valkeyUrl, vectorSize, config.valkeyPassword)
+		} else if (searchProvider === "valkey" && config.valkeyUrl) {
+			return new ValkeySearchVectorStore(this.workspacePath, config.valkeyUrl, vectorSize)
 		}
 
 		throw new Error(t("embeddings:serviceFactory.vectorStoreUrlMissing"))

@@ -250,8 +250,10 @@ export interface WebviewMessage {
 		// Secret settings
 		codeIndexOpenAiKey?: string
 		codeIndexQdrantApiKey?: string
+		codebaseIndexValkeyUrl?: string
 		codebaseIndexOpenAiCompatibleApiKey?: string
 		codebaseIndexGeminiApiKey?: string
+		searchProvider?: string
 	}
 }
 

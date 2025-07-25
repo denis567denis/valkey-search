@@ -16,7 +16,7 @@ export interface CodeIndexConfig {
 	qdrantUrl?: string
 	qdrantApiKey?: string
 	valkeyUrl?: string
-	valkeyPassword?: string
+	searchProvider?: string
 	searchMinScore?: number
 	searchMaxResults?: number
 }
@@ -38,5 +38,5 @@ export type PreviousConfigSnapshot = {
 	qdrantUrl?: string
 	qdrantApiKey?: string
 	valkeyUrl?: string
-	valkeyPassword?: string
+	searchProvider?: string
 }

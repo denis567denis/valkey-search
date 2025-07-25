@@ -56,6 +56,6 @@
 		}
 	},
 	"dependencies": {
-		"@valkey/client": "^1.0.0"
+		"iovalkey": "^0.3.3"
 	}
 }
