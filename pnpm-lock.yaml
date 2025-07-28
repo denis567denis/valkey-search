@@ -192,8 +192,8 @@ importers:
         specifier: ^17.6.0
         version: 17.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       redis:
-        specifier: ^5.5.5
-        version: 5.5.5
+        specifier: ^5.6.1
+        version: 5.6.1
       sonner:
         specifier: ^2.0.5
         version: 2.0.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -450,8 +450,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       redis:
-        specifier: ^5.5.5
-        version: 5.5.5
+        specifier: ^5.6.1
+        version: 5.6.1
       zod:
         specifier: ^3.25.61
         version: 3.25.61
@@ -3087,33 +3087,33 @@ packages:
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
 
-  '@redis/bloom@5.5.5':
-    resolution: {integrity: sha512-M0GDmw8k0EOFoSpmMjhFUADk/apoano97fLSpT81opgmkkDtBB9iB6l6husxnzK5t2qNz/o0+OCVG9g6lEEwKw==}
+  '@redis/bloom@5.6.1':
+    resolution: {integrity: sha512-5/22U76IMEfn6TeZ+uvjXspHw+ykBF0kpBa8xouzeHaQMXs/auqBUOEYzU2VKYDvnd2RSpPTyIg82oB7PpUgLg==}
     engines: {node: '>= 18'}
     peerDependencies:
-      '@redis/client': ^5.5.5
+      '@redis/client': ^5.6.1
 
-  '@redis/client@5.5.5':
-    resolution: {integrity: sha512-1Dv/CVdMNLw0mlROSnmpp4MQu+6YIJX0YR0h3g2hnPdLvk6L7TcRcrUj7BQFGSeZD2MxklAUO+rp09ITUqE5Og==}
+  '@redis/client@5.6.1':
+    resolution: {integrity: sha512-bWHmSFIJ5w1Y4aHsYs46XMDHKQsBHFRhNcllYaBxz2Zl+lu+gbm5yI9BqxvKh48bLTs/Wx1Kns0gN2WIasE8MA==}
     engines: {node: '>= 18'}
 
-  '@redis/json@5.5.5':
-    resolution: {integrity: sha512-Nq8wHjOhwuhD05YPWFPL9RyT3K1VdT37TKvqbhykZA2MWQgjjhLn5i1/6zZ+1b0Zc/Sr9E0eK9J8txk6YJR6EA==}
-    engines: {node: '>= 18'}
-    peerDependencies:
-      '@redis/client': ^5.5.5
-
-  '@redis/search@5.5.5':
-    resolution: {integrity: sha512-xM/DKrRhbsMS2QQF5bBPjR7P/QEjWWZDUr92r+UOwkZjvc/kmy0tp7h8zkxBo2jtSF99vkk2mwMzn6fQ8d60aQ==}
+  '@redis/json@5.6.1':
+    resolution: {integrity: sha512-cTggVzPIVuiFeXcEcnTRiUzV7rmUvM9KUYxWiHyjsAVACTEUe4ifKkvzrij0H/z3ammU5tfGACffDB3olBwtVA==}
     engines: {node: '>= 18'}
     peerDependencies:
-      '@redis/client': ^5.5.5
+      '@redis/client': ^5.6.1
 
-  '@redis/time-series@5.5.5':
-    resolution: {integrity: sha512-2ifwV75Fv/uVX4n0zqvgqIlIInHZtVj+afjcbXPBD2GhG2AeVfkitTz1bMnGnNDA78sWRYooK42OWH9yqujjyQ==}
+  '@redis/search@5.6.1':
+    resolution: {integrity: sha512-+eOjx8O2YoKygjqkLpTHqcAq0zKLjior+ee2tRBx/3RSf1+OHxiC9Y6NstshQpvB1XHqTw9n7+f0+MsRJZrp0g==}
     engines: {node: '>= 18'}
     peerDependencies:
-      '@redis/client': ^5.5.5
+      '@redis/client': ^5.6.1
+
+  '@redis/time-series@5.6.1':
+    resolution: {integrity: sha512-sd3q4jMJdoSO2akw1L9NrdFI1JJ6zeMgMUoTh4a34p9sY3AnOI4aDLCecy8L2IcPAP1oNR3TbLFJiCJDQ35QTA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@redis/client': ^5.6.1
 
   '@rollup/rollup-android-arm-eabi@4.40.2':
     resolution: {integrity: sha512-JkdNEq+DFxZfUwxvB58tHMHBHVgX23ew41g1OQinthJ+ryhdRk67O31S7sYw8u2lTjHUPFxwar07BBt1KHp/hg==}
@@ -8387,8 +8387,8 @@ packages:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
     engines: {node: '>=8'}
 
-  redis@5.5.5:
-    resolution: {integrity: sha512-x7vpciikEY7nptGzQrE5I+/pvwFZJDadPk/uEoyGSg/pZ2m/CX2n5EhSgUh+S5T7Gz3uKM6YzWcXEu3ioAsdFQ==}
+  redis@5.6.1:
+    resolution: {integrity: sha512-O9DwAvcBm/lrlkGE0A6gNBtUdA8J9oD9njeLYlLzmm+MGTR7nd7VkpspfXqeXFg3gm89zldDqckyaHhXfhY80g==}
     engines: {node: '>= 18'}
 
   reflect.getprototypeof@1.0.10:
@@ -12251,25 +12251,25 @@ snapshots:
 
   '@radix-ui/rect@1.1.1': {}
 
-  '@redis/bloom@5.5.5(@redis/client@5.5.5)':
+  '@redis/bloom@5.6.1(@redis/client@5.6.1)':
     dependencies:
-      '@redis/client': 5.5.5
+      '@redis/client': 5.6.1
 
-  '@redis/client@5.5.5':
+  '@redis/client@5.6.1':
     dependencies:
       cluster-key-slot: 1.1.2
 
-  '@redis/json@5.5.5(@redis/client@5.5.5)':
+  '@redis/json@5.6.1(@redis/client@5.6.1)':
     dependencies:
-      '@redis/client': 5.5.5
+      '@redis/client': 5.6.1
 
-  '@redis/search@5.5.5(@redis/client@5.5.5)':
+  '@redis/search@5.6.1(@redis/client@5.6.1)':
     dependencies:
-      '@redis/client': 5.5.5
+      '@redis/client': 5.6.1
 
-  '@redis/time-series@5.5.5(@redis/client@5.5.5)':
+  '@redis/time-series@5.6.1(@redis/client@5.6.1)':
     dependencies:
-      '@redis/client': 5.5.5
+      '@redis/client': 5.6.1
 
   '@rollup/rollup-android-arm-eabi@4.40.2':
     optional: true
@@ -18436,13 +18436,13 @@ snapshots:
       indent-string: 4.0.0
       strip-indent: 3.0.0
 
-  redis@5.5.5:
+  redis@5.6.1:
     dependencies:
-      '@redis/bloom': 5.5.5(@redis/client@5.5.5)
-      '@redis/client': 5.5.5
-      '@redis/json': 5.5.5(@redis/client@5.5.5)
-      '@redis/search': 5.5.5(@redis/client@5.5.5)
-      '@redis/time-series': 5.5.5(@redis/client@5.5.5)
+      '@redis/bloom': 5.6.1(@redis/client@5.6.1)
+      '@redis/client': 5.6.1
+      '@redis/json': 5.6.1(@redis/client@5.6.1)
+      '@redis/search': 5.6.1(@redis/client@5.6.1)
+      '@redis/time-series': 5.6.1(@redis/client@5.6.1)
 
   reflect.getprototypeof@1.0.10:
     dependencies:
