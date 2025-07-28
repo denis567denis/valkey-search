@@ -75,7 +75,6 @@ export class CodeIndexConfigManager {
 		const geminiApiKey = this.contextProxy?.getSecret("codebaseIndexGeminiApiKey") ?? ""
 
 		// Update instance variables with configuration
-		console.log("denis", "qadrant", codebaseIndexEnabled, codebaseIndexValkeyUrl, searchProvider)
 		this.codebaseIndexEnabled = codebaseIndexEnabled ?? true
 		this.qdrantUrl = codebaseIndexQdrantUrl
 		this.qdrantApiKey = qdrantApiKey ?? ""
