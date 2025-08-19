@@ -13,7 +13,7 @@
 	"dependencies": {
 		"@roo-code/telemetry": "workspace:^",
 		"@roo-code/types": "workspace:^",
-		"zod": "^3.25.61"
+		"zod": "^4.0.17"
 	},
 	"devDependencies": {
 		"@roo-code/config-eslint": "workspace:^",
